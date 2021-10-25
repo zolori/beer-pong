@@ -14,10 +14,12 @@ public class BallBehaviour : MonoBehaviour
 
     // input flow bool
     private short state = 0; // 0 - aiming angle ; 1 - aiming force ; 2 - has been launched
+    private bool launch = false;
 
     private float time = 0;
     private float angle;
     private float force;
+    private Vector3 initPos;
 
     void Awake()
     {
@@ -30,6 +32,7 @@ public class BallBehaviour : MonoBehaviour
         rb.isKinematic = true;
         angle = minAngle;
         force = minForce;
+        initPos = transform.position;
     }
 
     // Update is called once per frame
@@ -52,16 +55,28 @@ public class BallBehaviour : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state++;
-                    rb.isKinematic = false;
-                    rb.AddForce(force * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
+                    launch = true;
                 }
                 break;
             case 2:
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state = 0;
+                    time = 0;
+                    rb.isKinematic = true;
+                    transform.position = initPos;
                 }
                 break;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (state == 2 && launch)
+        {
+            rb.isKinematic = false;
+            rb.AddForce(force * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)), ForceMode2D.Impulse);
+            launch = false;
         }
     }
 
