@@ -14,7 +14,7 @@ public class BallBehaviour : MonoBehaviour
     public float timeForceLoop;
 
     public Slider Powerslider;
-    public GameObject PowerSliderUI;
+
 
 
     // input flow bool

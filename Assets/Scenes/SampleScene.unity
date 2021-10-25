@@ -315,8 +315,8 @@ MonoBehaviour:
   minForce: 0
   maxForce: 100
   timeForceLoop: 0
-  Powerslider: {fileID: 0}
-  PowerSliderUI: {fileID: 0}
+  Powerslider: {fileID: 2120260538}
+  PowerSliderUI: {fileID: 2120260536}
 --- !u!212 &162572319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -685,6 +685,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &2120260536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4750014942060836475, guid: 1d10d699087327c47bcef4c843307032, type: 3}
+  m_PrefabInstance: {fileID: 52534229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2120260538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4750014942060836473, guid: 1d10d699087327c47bcef4c843307032, type: 3}
+  m_PrefabInstance: {fileID: 52534229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120260536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4722744466631045161
 PrefabInstance:
   m_ObjectHideFlags: 0
