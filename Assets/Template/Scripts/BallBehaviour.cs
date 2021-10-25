@@ -86,7 +86,7 @@ public class BallBehaviour : MonoBehaviour
         if (state == 2 && launch)
         {
             rb.isKinematic = false;
-            rb.AddForce(force * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)), ForceMode2D.Impulse);
+            rb.AddForce(force * new Vector2(Mathf.Cos(angle * 2 * Mathf.PI / 360), Mathf.Sin(angle * 2 * Mathf.PI / 360)), ForceMode2D.Impulse);
             launch = false;
         }
     }
