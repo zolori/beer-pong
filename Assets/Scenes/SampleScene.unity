@@ -309,13 +309,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b8bf818d0efa64093241b5f73eb75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAngle: 0
-  maxAngle: 0
-  timeAngleLoop: 0
-  minForce: 0
-  maxForce: 100
-  timeForceLoop: 0
-  Powerslider: {fileID: 0}
+  minAngle: 49
+  maxAngle: 40
+  timeAngleLoop: 4
+  minForce: 39
+  maxForce: 40
+  timeForceLoop: 4
+  Powerslider: {fileID: 1973759800}
   PowerSliderUI: {fileID: 0}
 --- !u!212 &162572319
 SpriteRenderer:
@@ -683,8 +683,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1973759800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4750014942060836473, guid: 1d10d699087327c47bcef4c843307032, type: 3}
+  m_PrefabInstance: {fileID: 52534229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4722744466631045161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -702,7 +713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4722744466273852538, guid: 2f3afe6a8e2acfd4a88b81efb59ef304, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4722744466273852538, guid: 2f3afe6a8e2acfd4a88b81efb59ef304, type: 3}
       propertyPath: m_LocalScale.y
