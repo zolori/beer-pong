@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class BallBehaviour : MonoBehaviour
@@ -11,6 +12,10 @@ public class BallBehaviour : MonoBehaviour
     public float minForce;
     public float maxForce;
     public float timeForceLoop;
+
+    public Slider Powerslider;
+    public GameObject PowerSliderUI;
+
 
     // input flow bool
     private short state = 0; // 0 - aiming angle ; 1 - aiming force ; 2 - has been launched
@@ -38,6 +43,7 @@ public class BallBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Powerslider.value = force / maxForce;
         switch (state)
         {
             case 0:
@@ -67,6 +73,11 @@ public class BallBehaviour : MonoBehaviour
                     transform.position = initPos;
                 }
                 break;
+        }
+
+        if (force > maxForce)
+        {
+            force = maxForce;
         }
     }
 
