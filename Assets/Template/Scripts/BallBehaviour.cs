@@ -12,10 +12,7 @@ public class BallBehaviour : MonoBehaviour
     public float minForce;
     public float maxForce;
     public float timeForceLoop;
-
-    public Slider Powerslider;
-
-
+    public GameObject VectorDisplayer;
 
     // input flow bool
     private short state = 0; // 0 - aiming angle ; 1 - aiming force ; 2 - has been launched
@@ -34,22 +31,33 @@ public class BallBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.isKinematic = true;
+        initPos = transform.position;
+        init();
+    }
+
+    void init()
+    {
+        state = 0;
+        time = 0;
         angle = minAngle;
         force = minForce;
-        initPos = transform.position;
+        rb.isKinematic = true;
+        rb.velocity = Vector2.zero;
+        transform.position = initPos;
+        VectorDisplayer.SetActive(true);
+        VectorDisplayer.transform.rotation = Quaternion.Euler(0, 0, angle);
+        VectorDisplayer.transform.localScale = Vector2.right * force + Vector2.up;
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(force);
-        Powerslider.value = force / maxForce;
         switch (state)
         {
             case 0:
                 time += Time.deltaTime;
                 angle = (Mathf.Sin(time * (2 * Mathf.PI) / timeAngleLoop) + 1) / 2 * (maxAngle - minAngle) + minAngle;
+                VectorDisplayer.transform.rotation = Quaternion.Euler(0, 0, angle);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state++;
@@ -59,19 +67,18 @@ public class BallBehaviour : MonoBehaviour
             case 1:
                 time += Time.deltaTime;
                 force = (Mathf.Sin(time * (2 * Mathf.PI) / timeForceLoop) + 1) /2 * (maxForce - minForce) + minForce;
+                VectorDisplayer.transform.localScale = Vector2.right * force + Vector2.up;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state++;
                     launch = true;
+                    VectorDisplayer.SetActive(false);
                 }
                 break;
             case 2:
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    state = 0;
-                    time = 0;
-                    rb.isKinematic = true;
-                    transform.position = initPos;
+                    init();
                 }
                 break;
         }
@@ -100,5 +107,10 @@ public class BallBehaviour : MonoBehaviour
     public float GetForce()
     {
         return force;
+    }
+
+    public int GetState()
+    {
+        return state;
     }
 }
