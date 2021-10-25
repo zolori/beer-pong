@@ -14,7 +14,7 @@ public class BallBehaviour : MonoBehaviour
     public float timeForceLoop;
 
     public Slider Powerslider;
-    public GameObject PowerSliderUI;
+
 
 
     // input flow bool
@@ -43,12 +43,13 @@ public class BallBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(force);
         Powerslider.value = force / maxForce;
         switch (state)
         {
             case 0:
                 time += Time.deltaTime;
-                angle = Mathf.Sin(time * timeAngleLoop / 2 * Mathf.PI) * (maxAngle - minAngle) + minAngle;
+                angle = (Mathf.Sin(time * (2 * Mathf.PI) / timeAngleLoop) + 1) / 2 * (maxAngle - minAngle) + minAngle;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state++;
@@ -57,7 +58,7 @@ public class BallBehaviour : MonoBehaviour
                 break;
             case 1:
                 time += Time.deltaTime;
-                force = Mathf.Sin(time * timeForceLoop / 2 * Mathf.PI) * (maxForce - minForce) + minForce;
+                force = (Mathf.Sin(time * (2 * Mathf.PI) / timeForceLoop) + 1) /2 * (maxForce - minForce) + minForce;
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state++;
